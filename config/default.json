@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://Shyar:shiyar-baravi@connecter-zulu0.azure.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtPrivateKey": "shyar_jwt"
+}
