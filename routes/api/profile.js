@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const Validator = require('../../Validator');
+const validator = new Validator();
 const auth = require('../../middleware/authentication');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
-const Validator = require('../../Validator');
-const validator = new Validator();
+const Posts = require('../models/Posts');
 //@route    GET api/profile/me
 //@desc     Get current users profile
 //@access   Private
