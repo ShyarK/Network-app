@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
-import register from '../../actions/auth';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
-const Register = ({ setAlert }) => {
+
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,6 +41,11 @@ const Register = ({ setAlert }) => {
       // }
     }
   };
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
+
   return (
     <React.Fragment>
       <h1 className="large text-primary">Sign Up</h1>
@@ -97,8 +103,12 @@ const Register = ({ setAlert }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
 // the first parentheses contains the function setAlert that we want to use to transform
 // 'Passwords do not match' msg or props.
 // the second parentheses contains the container that we want to connect to the redux.
@@ -106,6 +116,6 @@ Register.propTypes = {
 // And whenever that occurs our setAlert event is invoked and the result is passed as a prop to
 // to Register component.
 export default connect(
-  null,
+  mapStateToProps,
   { setAlert, register },
 )(Register);

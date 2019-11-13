@@ -207,12 +207,12 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
 // @desc     Add profile education
 // @access   Private
 router.put('/education', [auth, [validator.userEducationValidator]], async (req, res) => {
-  const { school, degree, fieldOfStudy, from, to, current, description } = req.body;
+  const { school, degree, fieldofstudy, from, to, current, description } = req.body;
 
   const newEdu = {
     school,
     degree,
-    fieldOfStudy,
+    fieldofstudy,
     from,
     to,
     current,

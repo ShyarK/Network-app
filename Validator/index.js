@@ -4,20 +4,17 @@ function Validator() {
   const validateUserRegistration = function(user) {
     const schema = Joi.object({
       name: Joi.string()
-        .alphanum()
         .min(3)
         .max(30)
         .required(),
-
+      email: Joi.string()
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org'] } })
+        .required(),
       password: Joi.string()
         .pattern(/^[a-zA-Z0-9]{3,10}$/)
         .required(),
 
       repeat_password: Joi.ref('password'),
-
-      email: Joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org'] } })
-        .required(),
     });
     return schema.validate(user);
   };
@@ -37,12 +34,12 @@ function Validator() {
       status: Joi.string()
         .empty('')
         .required(),
-      skills: Joi.string()
-        .empty('')
-        .required(),
       company: Joi.string(),
       website: Joi.string(),
       location: Joi.string(),
+      skills: Joi.string()
+        .empty('')
+        .required(),
       bio: Joi.string(),
       githubusername: Joi.string(),
       youtube: Joi.string(),
@@ -79,7 +76,7 @@ function Validator() {
       degree: Joi.string()
         .empty('')
         .required(),
-      fieldOfStudy: Joi.string()
+      fieldofstudy: Joi.string()
         .empty('')
         .required(),
       from: Joi.date().required(),

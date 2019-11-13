@@ -7,7 +7,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   ACCOUNT_DELETED,
-} from '../actions/types';
+} from '../actions/type';
 
 const initialState = {
   token: localStorage.getItem('token'),
