@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -205,7 +205,4 @@ const mapStateToProps = state => ({
   profile: state.profile,
 });
 
-export default connect(
-  mapStateToProps,
-  { createProfile },
-)(withRouter(CreateProfile));
+export default connect(mapStateToProps, { createProfile })(withRouter(CreateProfile));
