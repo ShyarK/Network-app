@@ -9,7 +9,7 @@ import {
   GET_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
-} from './type';
+} from './types';
 
 // Get posts
 export const getPosts = () => async dispatch => {

@@ -5,7 +5,7 @@ import {
   UPDATE_PROFILE,
   GET_PROFILES,
   GET_REPOS,
-} from '../actions/type';
+} from '../actions/types';
 
 const initialState = {
   profile: null,
@@ -17,7 +17,6 @@ const initialState = {
 
 export default function(state = initialState, action) {
   const { type, payload } = action;
-
   switch (type) {
     case GET_PROFILE:
     case UPDATE_PROFILE:

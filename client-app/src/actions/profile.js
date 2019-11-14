@@ -9,7 +9,7 @@ import {
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
   GET_REPOS,
-} from './type';
+} from './types';
 
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
