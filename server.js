@@ -21,15 +21,16 @@ app.use('/api/auth', require('./routes/api/auth'));
 // Serve static assets in the production.
 if (process.env.NODE_ENV === 'production') {
   //set static folder
-  app.use(express.static('client-app/build'));
+  app.use(express.static('client/build'));
+
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client-app', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(port, err => {
+app.listen(PORT, err => {
   if (err) return console.log(err);
-  console.log(`Server started on http://localhost:${port}`);
+  console.log(`Server started on http://localhost:${PORT}`);
 });
