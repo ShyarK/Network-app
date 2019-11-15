@@ -1,7 +1,7 @@
 {
   "name": "connecter",
   "version": "1.0.0",
-  "description": "Socila netwok for HYF students",
+  "description": "Developer-Networking app for HYF students",
   "main": "server.js",
   "scripts": {
     "start": "node server",
