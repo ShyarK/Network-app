@@ -1,13 +1,8 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5000;
-const connectDB = require('./db/db.connection');
 
-console.log(`Node environment: ${process.env.NODE_ENVY}`); // undefined
-// When we want to know in what environment our application is running, and we can also
-// set our environment in CLI like so:
-console.log(`app: ${app.get('env')}`); // development
-console.log(`Your port is ${process.env.PORT}`); // undefined
+const connectDB = require('./db/db.connection');
+const path = require('path');
 // Connect DB
 connectDB();
 
@@ -22,6 +17,17 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/posts', require('./routes/api/posts'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/auth', require('./routes/api/auth'));
+
+// Serve static assets in the production.
+if (process.env.NODE_ENV === 'production') {
+  //set static folder
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
+const port = process.env.PORT || 5000;
 
 app.listen(port, err => {
   if (err) return console.log(err);
